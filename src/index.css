@@ -1,58 +1,29 @@
-:root {
-  color-scheme: dark;
-  --ink: #e8ecf8;
-  --muted: #9aa3c0;
-  --violet: #7c6cff;
-  --sky: #38bdf8;
+@import 'tailwindcss';
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    font-family:
+      'Inter',
+      'Noto Sans JP',
+      'Hiragino Kaku Gothic ProN',
+      'Yu Gothic',
+      system-ui,
+      sans-serif;
+  }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body,
-#root {
-  min-height: 100vh;
-}
-
-body {
-  font-family:
-    'Inter',
-    'Noto Sans JP',
-    'Hiragino Kaku Gothic ProN',
-    'Yu Gothic',
-    system-ui,
-    sans-serif;
-  color: var(--ink);
-  background-color: #0b0a1a;
-}
-
-.page {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2.5rem;
-  padding: 2rem;
-  overflow: hidden;
-  background:
-    radial-gradient(60rem 60rem at 85% -10%, rgba(124, 108, 255, 0.18), transparent 60%),
-    radial-gradient(50rem 50rem at 0% 110%, rgba(56, 189, 248, 0.14), transparent 60%),
-    #0b0a1a;
-}
-
-/* soft floating glows */
+/* soft floating glows behind the card */
 .glow {
   position: absolute;
-  border-radius: 50%;
+  border-radius: 9999px;
   filter: blur(90px);
-  opacity: 0.55;
+  opacity: 0.45;
   pointer-events: none;
+  animation: drift 14s ease-in-out infinite alternate;
 }
 
 .glow-a {
@@ -60,8 +31,7 @@ body {
   height: 26rem;
   top: -8rem;
   right: -6rem;
-  background: var(--violet);
-  animation: drift 14s ease-in-out infinite alternate;
+  background: #60a5fa;
 }
 
 .glow-b {
@@ -69,8 +39,9 @@ body {
   height: 22rem;
   bottom: -7rem;
   left: -5rem;
-  background: var(--sky);
-  animation: drift 18s ease-in-out infinite alternate-reverse;
+  background: #22d3ee;
+  animation-duration: 18s;
+  animation-direction: alternate-reverse;
 }
 
 @keyframes drift {
@@ -82,22 +53,8 @@ body {
   }
 }
 
+/* entrance + tap feedback */
 .card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.1rem;
-  padding: 4rem 3.5rem;
-  text-align: center;
-  border-radius: 1.75rem;
-  background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow:
-    0 1.5rem 4rem rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
   animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -112,53 +69,11 @@ body {
   }
 }
 
-.kicker {
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.title {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: clamp(3rem, 12vw, 5.5rem);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: 0.04em;
-  background: linear-gradient(120deg, #fff 10%, var(--sky) 55%, var(--violet) 90%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.subtitle {
-  max-width: 22rem;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--muted);
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-  padding: 0.45rem 1rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--ink);
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.06);
-}
-
 .dot {
   width: 0.5rem;
   height: 0.5rem;
-  border-radius: 50%;
+  border-radius: 9999px;
   background: #4ade80;
-  box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6);
   animation: pulse 2.2s ease-out infinite;
 }
 
@@ -169,14 +84,6 @@ body {
   100% {
     box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
   }
-}
-
-.footer {
-  position: relative;
-  font-size: 0.8rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: rgba(154, 163, 192, 0.6);
 }
 
 @media (prefers-reduced-motion: reduce) {
