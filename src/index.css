@@ -1,95 +1,12 @@
 @import 'tailwindcss';
 
 @layer base {
-  :root {
-    color-scheme: dark;
-  }
-
   body {
     font-family:
-      'Inter',
-      'Noto Sans JP',
       'Hiragino Kaku Gothic ProN',
       'Yu Gothic',
+      'Noto Sans JP',
       system-ui,
       sans-serif;
-  }
-}
-
-/* soft floating glows behind the card */
-.glow {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(90px);
-  opacity: 0.45;
-  pointer-events: none;
-  animation: drift 14s ease-in-out infinite alternate;
-}
-
-.glow-a {
-  width: 26rem;
-  height: 26rem;
-  top: -8rem;
-  right: -6rem;
-  background: #60a5fa;
-}
-
-.glow-b {
-  width: 22rem;
-  height: 22rem;
-  bottom: -7rem;
-  left: -5rem;
-  background: #22d3ee;
-  animation-duration: 18s;
-  animation-direction: alternate-reverse;
-}
-
-@keyframes drift {
-  from {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  to {
-    transform: translate3d(3rem, 2rem, 0) scale(1.15);
-  }
-}
-
-/* entrance + tap feedback */
-.card {
-  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(1.25rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 9999px;
-  background: #4ade80;
-  animation: pulse 2.2s ease-out infinite;
-}
-
-@keyframes pulse {
-  70% {
-    box-shadow: 0 0 0 0.55rem rgba(74, 222, 128, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .glow,
-  .dot,
-  .card {
-    animation: none;
   }
 }
