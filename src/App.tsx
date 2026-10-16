@@ -1,4 +1,5 @@
 import { Show, createSignal, type Component } from 'solid-js'
+import { Boxes } from 'lucide-solid'
 import GameView from './components/Game'
 
 type Phase = 'hello' | 'updated' | 'qr'
@@ -28,10 +29,11 @@ const App: Component = () => {
           </Show>
         </h1>
         <button
-          class="fixed bottom-4 left-4 rounded-lg bg-white/15 px-4 py-2 font-semibold shadow backdrop-blur transition hover:bg-white/25"
+          aria-label="Voxelcraft"
+          class="fixed bottom-4 left-4 rounded-full bg-white/10 p-2.5 text-white/80 transition duration-500 hover:rotate-[360deg] hover:bg-white/20 hover:text-white"
           onClick={() => setScreen('game')}
         >
-          🧱 Voxelcraft
+          <Boxes size={22} />
         </button>
       </main>
     }>
