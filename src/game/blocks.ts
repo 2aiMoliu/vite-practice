@@ -296,8 +296,9 @@ export function tileUV(tile: number, u: number, v: number): [number, number] {
   const row = Math.floor(tile / ATLAS_COLS)
   const atlasW = ATLAS_COLS * TILE_PX
   const atlasH = ATLAS_ROWS * TILE_PX
+  // face v grows up, canvas y grows down: sample the tile inverted in y
   const uPx = col * TILE_PX + 0.5 + u * (TILE_PX - 1)
-  const vPx = row * TILE_PX + 0.5 + v * (TILE_PX - 1)
+  const vPx = row * TILE_PX + 0.5 + (1 - v) * (TILE_PX - 1)
   // canvas y grows down, texture v grows up (CanvasTexture flips)
   return [uPx / atlasW, 1 - vPx / atlasH]
 }
