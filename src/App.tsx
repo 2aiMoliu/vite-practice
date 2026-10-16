@@ -23,7 +23,7 @@ const App: Component = () => {
               alt="このページのQRコード"
               width="200"
               height="200"
-              src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(location.href)}`}
+              src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=ffffff&bgcolor=1447e6&data=${encodeURIComponent(location.href)}`}
             />
           </Show>
         </h1>
